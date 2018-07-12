@@ -23,8 +23,8 @@ os: linux
 #   "files" section altogether. A blank or incomplete "files" section
 #   may cause associated deployments to fail.
 files:
-  #- source: /
-  #  destination: /home/ubuntu/node
+  - source: /
+    destination: /home/ubuntu/servertest
 # For deployments to Amazon Linux, Ubuntu Server, or RHEL instances,
 #   you can specify a "permissions"
 #   section here that describes special permissions to apply to the files
@@ -35,21 +35,13 @@ files:
 #   then remove the
 #   "permissions" section altogether. A blank or incomplete "permissions"
 #   section may cause associated deployments to fail.
+
 permissions:
   - object:
     pattern:
-    except:
-    owner:
-    group:
-    mode:
-    acls:
-      -
-    context:
-      user:
-      type:
-      range:
-    type:
-      -
+    owner: ubuntu
+    group: ubuntu
+
 # If you are not running any commands on the Amazon EC2 instance, then remove
 #   the "hooks" section altogether. A blank or incomplete "hooks" section
 #   may cause associated deployments to fail.
@@ -78,7 +70,7 @@ hooks:
 #   in the script specified in "location" starting from the root of the
 #   revision's file bundle.
   ApplicationStop:
-    - location:
+    - location: echo "test applicationStop"
       timeout:
       runas:
     - location:
@@ -86,7 +78,7 @@ hooks:
       runas:
 # During the BeforeInstall deployment lifecycle event, run the commands
 #   in the script specified in "location".
-  BeforeInstall:
+  BeforeInstall: echo "test beforeInstall"
     - location:
       timeout:
       runas:
@@ -95,7 +87,7 @@ hooks:
       runas:
 # During the AfterInstall deployment lifecycle event, run the commands
 #   in the script specified in "location".
-  AfterInstall:
+  AfterInstall:  echo "test afterInstall"
     - location:
       timeout:
       runas:
@@ -104,7 +96,7 @@ hooks:
       runas:
 # During the ApplicationStart deployment lifecycle event, run the commands
 #   in the script specified in "location".
-  ApplicationStart:
+  ApplicationStart: echo "test applicationstart"
     - location:
       timeout:
       runas:
