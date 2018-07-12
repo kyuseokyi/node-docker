@@ -23,8 +23,8 @@ os: linux
 #   "files" section altogether. A blank or incomplete "files" section
 #   may cause associated deployments to fail.
 files:
-  - source: /
-    destination: /home/ubuntu/node
+  #- source: /
+  #  destination: /home/ubuntu/node
 # For deployments to Amazon Linux, Ubuntu Server, or RHEL instances,
 #   you can specify a "permissions"
 #   section here that describes special permissions to apply to the files
@@ -36,11 +36,11 @@ files:
 #   "permissions" section altogether. A blank or incomplete "permissions"
 #   section may cause associated deployments to fail.
 permissions:
-  - object:/home/ubuntu
+  - object:
     pattern:
     except:
-    owner: ubuntu
-    group: ubuntu
+    owner:
+    group:
     mode:
     acls:
       -
