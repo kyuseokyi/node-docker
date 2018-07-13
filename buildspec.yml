@@ -28,6 +28,8 @@ artifacts:
     - index.html
     - package.json
     - appspec.yml
+    - start_server.sh
+    - stop_server.sh
     - node_modules/async/*
     - node_modules/lodash/*
     - bin/*
