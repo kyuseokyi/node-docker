@@ -7,9 +7,11 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const routes = require('./routes/index');
 const users = require('./routes/user');
+const jwtauth = require('./routes/jwtauth');
 
 const app = express();
 
@@ -17,6 +19,8 @@ const env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
 app.locals.ENV_DEVELOPMENT = env == 'development';
 
+//setup mongodeb.
+mongoose.connect('mongodb://localhost/jwtauth');
 // view engine setup
 
 app.set('views', path.join(__dirname, 'views'));
@@ -33,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/checking', jwtauth);
 
 /// catch 404 and forward to error handler
 app.use((req, res, next) => {
