@@ -14,6 +14,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Compiling the Node.js code
+      - docker build -t docker-test .
       #- mocha test.js
   post_build:
     commands:
